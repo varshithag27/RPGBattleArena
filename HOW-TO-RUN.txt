@@ -1,0 +1,83 @@
+================================================================================
+  RPG BATTLE ARENA - WEB GAME (FOR YOUR PROJECT)
+================================================================================
+
+This is a real Java web project:
+  - Spring Boot SERVER (backend + REST API)
+  - Browser UI (frontend) at http://localhost:8080
+
+================================================================================
+  STEP BY STEP - RUN THE GAME WITH UI
+================================================================================
+
+STEP 1: Open folder on Desktop
+        "java minipro"
+
+STEP 2: Double-click:  RUN-SERVER.bat
+
+STEP 3: WAIT in the black window until you see:
+        "Started RpgBattleArenaApplication"
+        (First time: 1-3 minutes. Later: faster.)
+
+STEP 4: Open Google Chrome or Edge
+
+STEP 5: In the address bar type exactly:
+        http://localhost:8080
+        Press Enter
+
+STEP 6: You will see the game website:
+        - Enter your name
+        - Pick Warrior / Mage / Archer
+        - Click "Start Adventure"
+        - Click "Attack" to fight
+        - Use items from Inventory
+        - See Leaderboard on the right
+
+STEP 7: To STOP the server:
+        Click the black window and press Ctrl+C
+
+================================================================================
+  FOR COLLEGE / VIVA (WHAT TO SAY)
+================================================================================
+
+- Backend: Java + Spring Boot (REST API on port 8080)
+- Frontend: HTML, CSS, JavaScript (calls /api/... endpoints)
+- OOP: Warrior, Mage, Archer extend PlayerCharacter
+- Endpoints:
+    POST /api/start-game
+    POST /api/attack
+    GET  /api/inventory
+    POST /api/inventory/use
+    GET  /api/leaderboard
+    GET  /api/health
+
+================================================================================
+  IF YOU SEE "PORT 8080 WAS ALREADY IN USE"
+================================================================================
+
+This means an OLD server is still running from before.
+
+Fix (easy):
+  1. Double-click RUN-SERVER.bat again (it now stops the old server automatically)
+
+Fix (manual):
+  1. Close any old black "RPG Battle Arena" windows
+  2. Or open cmd and run:  taskkill /F /IM java.exe
+     (only if you are not running other Java apps)
+  3. Run RUN-SERVER.bat again
+
+================================================================================
+  IF BROWSER SAYS "CANNOT CONNECT"
+================================================================================
+
+- Make sure RUN-SERVER.bat is still open and shows "Started..."
+- URL must be http://localhost:8080 (not https)
+- Wait longer on first run
+
+================================================================================
+  OPTIONAL - TERMINAL DEMO (NO UI)
+================================================================================
+
+  RUN-DEMO.bat  = quick text demo in console (for testing only)
+
+================================================================================

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Battle Arena</title>
+    <link rel="stylesheet" href="/css/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="arena-bg"></div>
+    <div class="bg-glow"></div>
+
+    <header class="top-bar">
+        <div class="logo">
+            <span class="logo-icon">⚔</span>
+            <h1>RPG Battle Arena</h1>
+        </div>
+        <div class="server-pill" id="serverStatus">
+            <span class="dot"></span>
+            <span>Connecting...</span>
+        </div>
+    </header>
+
+    <main class="layout">
+        <section id="screenStart" class="panel start-panel">
+            <h2>Enter the Colosseum</h2>
+            <p class="subtitle">Face living enemies in brutal turn-based combat. Every strike is real — every fall is final.</p>
+
+            <form id="startForm" class="start-form">
+                <label>
+                    Fighter Name
+                    <input type="text" id="playerName" placeholder="Enter your name" maxlength="24" required>
+                </label>
+
+                <p class="label-title">Choose Your Fighter</p>
+                <div class="class-grid">
+                    <label class="class-card">
+                        <input type="radio" name="characterClass" value="Warrior" checked>
+                        <div class="class-preview warrior-preview"></div>
+                        <strong>Warrior</strong>
+                        <small>Charges &amp; blade strikes</small>
+                    </label>
+                    <label class="class-card">
+                        <input type="radio" name="characterClass" value="Mage">
+                        <div class="class-preview mage-preview"></div>
+                        <strong>Mage</strong>
+                        <small>Arcane fire &amp; spells</small>
+                    </label>
+                    <label class="class-card">
+                        <input type="radio" name="characterClass" value="Archer">
+                        <div class="class-preview archer-preview"></div>
+                        <strong>Archer</strong>
+                        <small>Arrows &amp; critical shots</small>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg">Enter Arena</button>
+            </form>
+        </section>
+
+        <section id="screenGame" class="game-screen hidden">
+            <div class="battle-arena panel">
+                <div class="arena-top">
+                    <span class="wave-badge">Wave <span id="waveNum">1</span></span>
+                    <p class="arena-announce" id="arenaAnnounce">Prepare for battle…</p>
+                </div>
+
+                <div class="combat-stage" id="combatStage">
+                    <div class="stage-floor"></div>
+                    <div class="damage-layer" id="damageLayer"></div>
+
+                    <div class="combatant player-combatant" id="playerCombatant">
+                        <div class="character-sprite" id="playerSprite">
+                            <div class="sprite-body player-body"></div>
+                            <div class="sprite-weapon" id="playerWeapon"></div>
+                        </div>
+                        <div class="combatant-name" id="playerNameDisplay">Hero</div>
+                        <div class="combatant-class" id="playerClassDisplay">Warrior</div>
+                        <div class="hp-bar combat-hp"><div class="hp-fill player-hp" id="playerHpBar"></div></div>
+                        <p class="hp-text" id="playerHpText">0 / 0</p>
+                        <div class="mini-stats">
+                            <span>Lv.<strong id="playerLevel">1</strong></span>
+                            <span>ATK <strong id="playerAtk">0</strong></span>
+                            <span>XP <strong id="playerXp">0</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="combat-center">
+                        <span class="vs-clash">⚔</span>
+                    </div>
+
+                    <div class="combatant enemy-combatant" id="enemyCombatant">
+                        <div class="character-sprite enemy-sprite-wrap" id="enemySprite">
+                            <div class="sprite-body enemy-body" id="enemyBody"></div>
+                        </div>
+                        <div class="combatant-name" id="enemyName">Enemy</div>
+                        <div class="combatant-class" id="enemyTypeLabel">Hostile</div>
+                        <div class="hp-bar combat-hp"><div class="hp-fill enemy-hp" id="enemyHpBar"></div></div>
+                        <p class="hp-text" id="enemyHpText">0 HP</p>
+                        <div class="mini-stats">
+                            <span>ATK <strong id="enemyAtk">0</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="status-chip" id="statusEffect">Condition: Ready</p>
+
+                <div class="action-row">
+                    <button class="btn btn-primary btn-strike" id="btnAttack">⚔ Strike!</button>
+                    <button class="btn btn-secondary" id="btnNewGame">Leave Arena</button>
+                </div>
+            </div>
+
+            <aside class="side-column">
+                <div class="panel log-panel cinematic-log">
+                    <h3>Live Combat Feed</h3>
+                    <ul id="battleLog"></ul>
+                </div>
+
+                <div class="panel inventory-panel">
+                    <h3>Battle Pack</h3>
+                    <ul id="inventoryList" class="inventory-list"></ul>
+                    <p class="empty-msg hidden" id="inventoryEmpty">No supplies.</p>
+                </div>
+
+                <div class="panel leaderboard-panel">
+                    <div class="panel-head">
+                        <h3>Champions</h3>
+                        <button class="btn btn-small" id="btnRefreshBoard">Refresh</button>
+                    </div>
+                    <ol id="leaderboardList"></ol>
+                    <p class="empty-msg hidden" id="leaderboardEmpty">No champions yet.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/js/game.js"></script>
+</body>
+</html>

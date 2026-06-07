@@ -1,0 +1,5 @@
+com\example\rpgbattlearena\model\BattleDetails.class
+com\example\rpgbattlearena\controller\ApiExceptionHandler.class
+com\example\rpgbattlearena\ConsoleGame.class
+com\example\rpgbattlearena\service\GameService$1.class
+com\example\rpgbattlearena\controller\HealthController.class

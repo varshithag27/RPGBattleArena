@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RPG Battle Arena
 
 Java mini project: **Spring Boot REST API** + **browser game UI**.
@@ -48,3 +49,6 @@ src/main/resources/static/       Web UI (index.html, css, js)
 ## Optional console demo
 
 `RUN-DEMO.bat` — text-only demo without browser.
+=======
+# RPGBattleArena
+>>>>>>> 978cf7dd86bcf753016147edbe6ef53fab8f9bf6

@@ -1,54 +1,74 @@
-<<<<<<< HEAD
-# RPG Battle Arena
+# RPGBattleArena
 
-Java mini project: **Spring Boot REST API** + **browser game UI**.
+RPGBattleArena is a Java mini-project that combines a Spring Boot REST backend with a browser-based turn-based battle game.
 
-## Run the game (web UI)
+## What this project contains
 
-1. Double-click **`RUN-SERVER.bat`**
-2. Wait for `Started RpgBattleArenaApplication`
-3. Open browser: **http://localhost:8080**
-4. Play: choose class → Start Adventure → Attack → use items
+- A Spring Boot application written for Java 17
+- REST endpoints for starting a game, attacking, using inventory items, and reading leaderboard data
+- A static web UI served from `src/main/resources/static` using HTML, CSS, and JavaScript
+- Game logic for three player classes: Warrior, Mage, and Archer
+- Enemy encounters, health tracking, and item usage
 
-See **`HOW-TO-RUN.txt`** for full step-by-step instructions.
+## Run the web game
 
-## Architecture (for project report)
+### Option 1: Use the batch file
+1. Double-click `RUN-SERVER.bat`
+2. Wait until the server logs show `Started RpgBattleArenaApplication`
+3. Open your browser to `http://localhost:8080`
+4. Enter a player name, choose a class, and click `Start Adventure`
+5. Use `Attack` and `Use Item` in the browser to fight enemies
 
-| Layer | Technology |
-|-------|------------|
-| Server | Java 17, Spring Boot 3 |
-| API | REST (`/api/*`) |
-| UI | HTML, CSS, JavaScript |
-| Build | Maven |
+### Option 2: Use Maven
+1. Open a terminal in the project root
+2. Run `mvn spring-boot:run`
+3. Open `http://localhost:8080` in your browser
+
+## Quick commands
+
+- `RUN-SERVER.bat` — launch the Spring Boot server and open the web UI
+- `RUN-DEMO.bat` — run the console-only demo version
+- `RUN-GAME.bat` — launch the main game logic (if configured for local use)
+- `HOW-TO-RUN.txt` — detailed usage instructions
 
 ## REST API endpoints
 
-| Method | URL | Description |
-|--------|-----|-------------|
-| POST | `/api/start-game` | Start session `{ "name", "characterClass" }` |
-| POST | `/api/attack` | One battle turn |
-| GET | `/api/inventory` | List items |
-| POST | `/api/inventory/use` | Use item `{ "itemName" }` |
-| GET | `/api/leaderboard` | Top players |
-| GET | `/api/health` | Server status |
+- `POST /api/start-game` — start a new game session with JSON payload `{ "name": "Player", "characterClass": "Warrior" }`
+- `POST /api/attack` — execute one fight turn against the current enemy
+- `GET /api/inventory` — retrieve the player’s current inventory items
+- `POST /api/inventory/use` — use one item with JSON payload `{ "itemName": "Health Potion" }`
+- `GET /api/leaderboard` — fetch the top players and scores
+- `GET /api/health` — check application health
 
 ## Project structure
 
-```
-src/main/java/.../controller/   REST controllers
-src/main/java/.../service/       Game logic
-src/main/java/.../model/         OOP classes (Warrior, Mage, Archer, Enemy, Item)
-src/main/resources/static/       Web UI (index.html, css, js)
-```
+- `src/main/java/com/example/rpgbattlearena/controller` — REST controllers and request handlers
+- `src/main/java/com/example/rpgbattlearena/service` — game flow, session management, and battle logic
+- `src/main/java/com/example/rpgbattlearena/model` — domain objects, player classes, enemy classes, items, and response models
+- `src/main/resources/static` — web UI assets: `index.html`, `css/game.css`, `js/game.js`
 
 ## Requirements
 
-- Java 17
-- Maven
+- Java 17 or newer
+- Maven 3.x
 
-## Optional console demo
+## Build
 
-`RUN-DEMO.bat` — text-only demo without browser.
-=======
-# RPGBattleArena
->>>>>>> 978cf7dd86bcf753016147edbe6ef53fab8f9bf6
+To package the application:
+
+```bash
+mvn clean package
+```
+
+Then run with:
+
+```bash
+mvn spring-boot:run
+```
+
+## Notes
+
+- The browser UI is served automatically from the Spring Boot app on `http://localhost:8080`
+- The game state is managed per session through the backend service
+- Use `HOW-TO-RUN.txt` for a full step-by-step walkthrough
+
